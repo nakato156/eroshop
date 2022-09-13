@@ -2,7 +2,7 @@
 <div class="container-fluid justify-content-around mt-4" style="flex-wrap: wrap; height: 90vh;display: flex;">
     <% for(let i = 0; i < productos.length; i++){ %>
         <div class="card border-secondary mb-3" style="max-width: 15rem;cursor: pointer;" onclick="window.location.href='./producto/<%=productos[i].uuid%>'">
-            <img class="card-img-top" src="https://storage.ecosolucionesweb.com/img/tn_<%=productos[i].uuid%>" alt="">
+            <img class="card-img-top" src="<%=productos[i].url_tn_img%>" alt="">
             <div class="card-body">
                 <h4 class="card-title"> <%= productos[i].nombre%> </h4>
                 <p class="card-text"> S/ <%= productos[i].precio%> </p>
