@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="/static/darkly.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Admin</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" bs-target="agregarProducto" href="#">Agregar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#editar" bs-target="editarProducto">Editar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#compras">Compras</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-9" id="agregarProducto" style="display: block;">
+                <form id="formAddProducto">
+                    <legend>Agregar Producto</legend>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 form-group">
+                            <label class="form-label mt-4">Nombre</label>
+                            <input type="text" class="form-control" name="nombre">
+                        </div>
+                        <div class="col-sm-12 col-md-4 form-group">
+                            <label class="form-label mt-4">Categoria</label>
+                            <select class="form-select" name="categoria">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-md-4 form-group">
+                            <label class="form-label mt-4">Precio</label>
+                            <input type="number" class="form-control" name="precio">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea" class="form-label mt-4">Descripcion</label>
+                        <textarea class="form-control" name="descripcion" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="formFile" class="form-label mt-4">Default file input example</label>
+                        <input class="form-control" type="file" id="formFile" name="imagen">
+                    </div>
+                    <div class="row p-3">
+                        <button class="btn btn-success" id="btnAddProd">Guardar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12" id="editarProducto" style="display: none;">
+                <div class="row p-3">
+                    <div class="col-sm-12 col-md-5">
+                        <form class="row" id="BuscarProducto">
+                            <div class="col-6 mb-3">
+                                <label>Buscar producto</label>
+                                <input class="form-control" type="text" name="query">
+                              </div>
+                            <div class="col-6 mb-3">
+                                <label>Criterio</label>
+                                <select class="form-select" name="criterio">
+                                    <option value="nombre">Nombre</option>
+                                    <option value="uuid">ID</option>
+                                </select>
+                            </div>
+                        </form>
+                        <div class="row" id="ResultadosBusqueda"></div>
+                    </div>
+                    <div class="col-sm-12 col-md-7">
+                        <form id="formEditProducto">
+                            <legend>Editar Producto</legend>
+                            <input type="hidden" name="uuid">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group">
+                                    <label class="form-label mt-4">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre">
+                                </div>
+                                <div class="col-sm-12 col-md-4 form-group">
+                                    <label class="form-label mt-4">Categoria</label>
+                                    <select class="form-select" name="categoria">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 col-md-4 form-group">
+                                    <label class="form-label mt-4">Precio</label>
+                                    <input type="number" class="form-control" name="precio">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea" class="form-label mt-4">Descripcion</label>
+                                <textarea class="form-control" name="descripcion" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="formFile" class="form-label mt-4">Imagen del producto</label>
+                                <input class="form-control" type="file" id="updateImgProd">
+                            </div>
+                            <div class="row p-3 justify-content-between">
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-success" type="submit" id="btnAddProd">Actualizar</button>
+                                    <button class="btn btn-danger" type="reset" id="btnCancelarProd">Cancelar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-9" id="categorias" style="display: none;">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6" id="ListaCategorias"></div>
+                    <div class="col-sm-12 col-md-6" id="addCategoria">
+                        <input type="text" name="categoria">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/static/js/admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</html>

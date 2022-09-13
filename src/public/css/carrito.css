@@ -1,0 +1,5 @@
+.bx-minus, .bx-plus {
+    margin: 0 2px;
+    cursor: pointer;
+    color: darkmagenta;
+}

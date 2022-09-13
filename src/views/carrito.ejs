@@ -1,0 +1,54 @@
+<%- include('./partials/header') %>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="/static/css/carrito.css">
+<div class="container-fluid">
+    <div class="row my-5 justify-content-center">
+        <div class="col-sm-12 col-md-10 col-lg-6">
+            <table class="table table-bordered border border-light">
+                <thead class="table-primary">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Sub Total</th>
+                    </tr>
+                </thead>
+                <tbody id="contenidoCarrito" class="table-group-divider">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <form id="formCompra">
+                <div class="mb-3">
+                    <label class="form-label">Nombres</label>
+                    <input type="text" class="form-control" name="nombre">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Correo electr&oacute;nico</label>
+                    <input type="email" class="form-control" name="email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ciudad</label>
+                    <select class="form-select" name="ciudad">
+                        <option selected>Ciudad</option>
+                        <option value="1">Cajamarca</option>
+                        <option value="2">Lima</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Direcci&oacute;n</label>
+                    <input type="text" class="form-control" name="direccion">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+<script>
+    const mp = new MercadoPago("<%=PUBLIC_KEY%>");
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/static/js/carrito.js"></script>
+<%- include('./partials/footer') %>

@@ -1,0 +1,31 @@
+<%- include('./partials/header') %>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+<div class="container-fluid" >
+    <div class="row justify-content-center mt-4">
+        <div class="col-sm-12 col-md-4" style="max-width: 30%;">
+            <img class="img-fluid" src="https://storage.ecosolucionesweb.com/img/<%=producto.uuid%>" alt="">
+        </div>
+        <div class="col-sm-12 col-md-5">
+            <div class="row">
+                <div class="col-12">
+                    <%if(producto.descripcion.length == 1){%>
+                        <span><%=producto.descripcion[0]%></span>
+                    <% } else { %>
+                        <ul>
+                        <% for(let i = 0; i < producto.descripcion.length; i++){ %>
+                            <li><%=producto.descripcion[i]%></li>
+                        <% } %>
+                        </ul>
+                    <% } %>
+                </div>
+                <div class="col-12 p-3">
+                    <button class="btn btn-success" onclick="addCarrito('<%=producto.uuid%>', '<%=producto.nombre%>', '<%=producto.precio%>')">Agregar al carrito S/<%=producto.precio%></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/icon_carrito') %>
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/static/js/producto.js"></script>
+<%- include('./partials/footer') %>
