@@ -1,29 +1,42 @@
 <%- include('./partials/header') %>
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-<div class="container-fluid" >
-    <div class="row justify-content-center mt-4">
-        <div class="col-sm-12 col-md-4" style="max-width: 30%;">
-            <img class="img-fluid" src="<%=producto.url_img%>" alt="">
-        </div>
-        <div class="col-sm-12 col-md-5">
-            <div class="row">
-                <div class="col-12">
-                    <%if(producto.descripcion.length == 1){%>
-                        <span><%=producto.descripcion[0]%></span>
-                    <% } else { %>
-                        <ul>
-                        <% for(let i = 0; i < producto.descripcion.length; i++){ %>
-                            <li><%=producto.descripcion[i]%></li>
-                        <% } %>
-                        </ul>
-                    <% } %>
-                </div>
-                <div class="col-12 p-3">
-                    <button class="btn btn-success" onclick="addCarrito('<%=producto.uuid%>', '<%=producto.nombre%>', '<%=producto.precio%>')">Agregar al carrito S/<%=producto.precio%></button>
+<section>
+    <div class="container px-6 py-10 mx-auto">
+        <div class="lg:-mx-6 lg:flex lg:items-center">
+            <img class="object-fit object-center lg:w-[40%] lg:mx-6 w-full h-96 rounded-lg lg:h-[40%]" src="<%=producto.url_img%>" alt="">
+
+            <div class="mt-8 lg:w-1/2 lg:px-6 lg:mt-0">    
+                <h1 class="text-2xl font-semibold text-gray-800 dark:text-white lg:text-3xl lg:w-96">
+                    <%=producto.nombre%>
+                </h1>
+
+                <%if(producto.descripcion.length == 1){%>
+                    <p class="max-w-lg mt-6 text-[#32fbe2]" style="text-shadow: 0 0 1px rgba(50,251,226,.3), 0 0 2px rgba(50,251,226,.3), 0 0 5px rgba(50,251,226,.2);">
+                        <%=producto.descripcion[0]%>
+                    </p>
+                <% } else { %>
+                    <div class="flow-root">
+                        <dl class="-my-3 divide-y divide-gray-100 text-sm">
+                            <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                            <% for(let i = 0; i < producto.descripcion.length; i++){ %>
+                                <dd class="text-[#32fbe2] sm:col-span-2" style="text-shadow: 0 0 1px rgba(50,251,226,.3), 0 0 2px rgba(50,251,226,.3), 0 0 5px rgba(50,251,226,.2);"><%=producto.descripcion[i]%></dd>
+                            <% } %>
+                            </div>
+                        </dl>
+                    </div>
+                <% } %>
+
+                <div class="flex items-center justify-between mt-12 lg:justify-start">
+                    <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800" onclick="addCarrito('<%=producto.uuid%>', '<%=producto.nombre%>', '<%=producto.precio%>', '<%=producto.url_tn_img%>')">
+                        <span class="relative px-5 py-2.5 transition-colors ease-in duration-300 bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                            Agregar al carrito S/<%=producto.precio%>
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+</section>
     <%- include('./partials/icon_carrito') %>
 </div>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

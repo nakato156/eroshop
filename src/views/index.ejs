@@ -1,13 +1,19 @@
 <%- include('./partials/header') %>
-<div class="container-fluid justify-content-around mt-4" style="flex-wrap: wrap; height: 90vh;display: flex;">
+<div class="justify-around mx-3 mt-4 flex flex-wrap" style="height: 90vh;">
     <% for(let i = 0; i < productos.length; i++){ %>
-        <div class="card border-secondary mb-3" style="max-width: 15rem;cursor: pointer;" onclick="window.location.href='./producto/<%=productos[i].uuid%>'">
-            <img class="card-img-top" src="<%=productos[i].url_tn_img%>" alt="">
-            <div class="card-body">
-                <h4 class="card-title"> <%= productos[i].nombre%> </h4>
-                <p class="card-text"> S/ <%= productos[i].precio%> </p>
+        <a href="./producto/<%=productos[i].uuid%>" class="block mx-2 rounded-lg mb-3 shadow-md shadow-fuchsia-700">
+            <img alt="Home" src="<%=productos[i].url_tn_img%>" class="h-64 w-full rounded-md object-cover" />
+            <div class="py-1 px-2">
+              <dl>
+                <div>
+                    <dd class="text-xl font-bold text-gray-100"><%= productos[i].nombre%></dd>
+                </div>
+                <div>
+                  <dd class="text-lg text-gray-200">S/ <%= productos[i].precio%></dd>
+                </div>
+              </dl>
             </div>
-        </div>
+        </a>
     <% } %>
 </div>
 <%- include('./partials/footer') %>

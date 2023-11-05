@@ -1,50 +1,50 @@
 <%- include('./partials/header') %>
-<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="/static/css/carrito.css">
-<div class="container-fluid">
-    <div class="row my-5 justify-content-center">
-        <div class="col-sm-12 col-md-10 col-lg-6">
-            <table class="table table-bordered border border-light">
-                <thead class="table-primary">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Sub Total</th>
-                    </tr>
-                </thead>
-                <tbody id="contenidoCarrito" class="table-group-divider">
+<main class="w-full flex flex-wrap max-w-full">
+    <section class="w-full md:w-2/3 mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <div class="mx-auto max-w-3xl">
+            <header class="text-center">
+                <h1 class="text-xl font-bold text-gray-300 sm:text-3xl">Mis productos</h1>
+            </header>
+    
+            <div class="mt-8">
+                <ul id="contenidoCarrito" class="space-y-4"></ul>
+            </div>
+        </div>
+    </section>
 
-                </tbody>
-            </table>
-        </div>
-        <div class="col-sm-12 col-md-6">
-            <form id="formCompra">
-                <div class="mb-3">
-                    <label class="form-label">Nombres</label>
-                    <input type="text" class="form-control" name="nombre">
+    <section class="mx-auto w-full md:w-1/3 px-2 py-6 sm:px-6 lg:px-2">
+        <form id="formCompra" class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+            <div>
+                <label class="block text-sm font-medium text-gray-300" for="name">Nombres</label>
+                <input name="nombre" class="w-full rounded-lg border-gray-200 p-3 text-sm" type="text" id="name" placeholder="Nombres"/>
+            </div>
+            <div class="relative">
+                <label for="UserEmail" class="block text-sm font-medium text-gray-300">Correo electr&oacute;nico</label>
+                <div class="relative">
+                    <input type="email" id="UserEmail" placeholder="mi.correo@email.com" class="w-full rounded-md border-gray-200 pe-10 p-3 shadow-sm sm:text-sm"/>
+                    <span class="pointer-events-none absolute inset-y-0 end-0 grid w-10 place-content-center text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4">
+                        <path fill-rule="evenodd" d="M5.404 14.596A6.5 6.5 0 1116.5 10a1.25 1.25 0 01-2.5 0 4 4 0 10-.571 2.06A2.75 2.75 0 0018 10a8 8 0 10-2.343 5.657.75.75 0 00-1.06-1.06 6.5 6.5 0 01-9.193 0zM10 7.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5z" clip-rule="evenodd"/>
+                        </svg>
+                    </span>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Correo electr&oacute;nico</label>
-                    <input type="email" class="form-control" name="email">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Ciudad</label>
-                    <select class="form-select" name="ciudad">
-                        <option selected>Ciudad</option>
-                        <option value="1">Cajamarca</option>
-                        <option value="2">Lima</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Direcci&oacute;n</label>
-                    <input type="text" class="form-control" name="direccion">
-                </div>
-            </form>
-        </div>
+            </div>
+            <div>
+                <label for="selectCiudad" class="block text-sm font-medium text-gray-300">Ciudad</label>
+                <select name="ciudad" id="selectCiudad" class="mt-1.5 w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm">
+                    <option selected>Ciudad</option>
+                    <option value="1">Cajamarca</option>
+                    <option value="2">Lima</option>
+                </select>
+            </div>
+            <div class="relative">
+                <label class="block text-sm font-medium text-gray-300" for="direccion">Direcci&oacute;n</label>
+                <input type="text" class="w-full rounded-lg border-gray-200 p-3 text-sm" name="direccion" id="direccion" placeholder="Direccion">
+            </div>
+        </form>
     </div>
-</div>
+</main>
 <script src="https://sdk.mercadopago.com/js/v2"></script>
 <script>
     const mp = new MercadoPago("<%=PUBLIC_KEY%>");

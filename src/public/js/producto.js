@@ -1,8 +1,8 @@
-function addCarrito(id, nombre, precio){
+function addCarrito(id, nombre, precio, url){
     let carrito = localStorage.getItem('carrito')
     carrito = JSON.parse(carrito)
 
-    const item_default = {cantidad: 1, precio, nombre}
+    const item_default = {cantidad: 1, precio, nombre, url}
     
     if(carrito){
         if(carrito[id])carrito[id]['cantidad'] += 1;
